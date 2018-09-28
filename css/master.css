@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto Mono', monospace;
   color: #000000;
+  background-color: #f3f2f2;
 }
 
 .marked-h1 {
@@ -53,15 +54,15 @@ section {
   margin: -65px auto 0px auto;
 }
 
-.project {
+/* .project {
   margin: 10px 0px 40px 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+ */
 
-.project:hover .project-info-box {
+/* .project:hover .project-info-box {
   margin-top: -100px;
   height: 140px;
-}
+} */
 
 .project-info-box {
   background-color: white;
@@ -85,7 +86,7 @@ section {
   display: inline;
 }
 
-.project-info-icons-box {
+/* .project-info-icons-box {
   display: inline;
   padding-left: 10px;
   font-size: 24px;
@@ -96,60 +97,77 @@ section {
   display: inline;
   margin-right: 20px;
   margin-top: 5px;
-}
+} */
 
-/* entire container, keeps perspective */
-
-.flip-container {
+.project-flip {
+  -webkit-perspective: 1000px;
   perspective: 1000px;
+  margin: 10px 0px 40px 10px;
 }
 
-/* flip the pane when hovered */
-
-.flip-container:hover .flipper,
-.flip-container.hover .flipper {
+.project-flip:hover .flip,
+.project-flip.hover .flip {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.flip-container,
+.project-flip,
 .front,
 .back {
   width: 100%;
-  height: 100%;
+  height: 340px;
 }
 
-/* flip speed goes here */
-
-.flipper {
+.flip {
   transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   position: relative;
 }
 
-/* hide back of pane during swap */
-
 .front,
 .back {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-
-/* front pane, placed above back */
 
 .front {
   z-index: 2;
-  /* for firefox 31 */
+  -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
 
-/* back, initially hidden pane */
-
 .back {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
+  padding: 20px;
 }
 
-.social-icons {
+.social-icons ion-icon {
   font-size: 32px;
+}
+
+.social-icon {
+  display: table;
+  width: 100%;
+}
+
+.social-icon-text {
+  display: inline;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.social-icon-text h6 {
+  display: inline;
+}
+
+.social-icon-logo {
+  display: inline;
+  display: table-cell;
+  vertical-align: middle;
 }
